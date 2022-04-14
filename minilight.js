@@ -26,7 +26,7 @@ const CommentTokenTypes = [
   TokenTypes.singleLineCommentHash,
 ];
 
-const defaultConfig = {
+export const defaultConfig = {
   styles: {
     unformatted: "",
     punctuation: "opacity: 0.5",
