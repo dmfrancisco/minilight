@@ -136,22 +136,22 @@ export const minilight = (el, config = {}) => {
   };
 
   const getTokenType = () => {
-    if (char == "#") {
+    if (char === "#") {
       return TokenTypes.singleLineCommentHash;
-    } else if (char + next1 == "//") {
+    } else if (char + next1 === "//") {
       return TokenTypes.singleLineCommentSlash;
-    } else if (char + next1 == "/*") {
+    } else if (char + next1 === "/*") {
       return TokenTypes.multiLineComment;
-    } else if (char + next1 + text[pos + 1] + text[pos + 2] == "<!--") {
+    } else if (char + next1 + text[pos + 1] + text[pos + 2] === "<!--") {
       return TokenTypes.xmlComment;
-    } else if (char == "`") {
+    } else if (char === "`") {
       return TokenTypes.stringTemplate;
-    } else if (char == "'") {
+    } else if (char === "'") {
       return TokenTypes.stringSingle;
-    } else if (char == '"') {
+    } else if (char === '"') {
       return TokenTypes.stringDouble;
     } else if (
-      char == "/" &&
+      char === "/" &&
       // previous token was an opening brace or an operator (otherwise division, not a regex)
       [TokenTypes.whitespace, TokenTypes.operator].includes(lastTokenType) &&
       // workaround for xml closing tags
@@ -175,7 +175,7 @@ export const minilight = (el, config = {}) => {
     // escaping if needed (with except for comments)
     // previous character will not be therefore
     // recognized as a token finalize condition
-    (prev1 = tokenType < 7 && prev1 == "\\" ? 1 : char))
+    (prev1 = !CommentTokenTypes.includes(tokenType) && prev1 === "\\" ? true : char))
   ) {
     char = next1;
     next1 = text[++pos];
