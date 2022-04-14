@@ -93,8 +93,9 @@ export const minilight = (el, config = {}) => {
       case TokenTypes.regex:
         return (prev1 === "/" || prev1 === "\n") && multichar;
       case TokenTypes.stringDouble:
-      case TokenTypes.stringSingle:
         return prev1 === '"' && multichar;
+      case TokenTypes.stringSingle:
+        return prev1 === "'" && multichar;
       case TokenTypes.xmlComment:
         return text[pos - 4] + prev2 + prev1 === "-->";
       case TokenTypes.multiLineComment:
