@@ -17,6 +17,9 @@
     "snippet",
     "code snippet"
   ],
+  "scripts": {
+    "build": "esbuild minilight.js --minify --legal-comments=none --outfile=minilight.min.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/dmfrancisco/minilight.git"
@@ -31,5 +34,8 @@
   "prettier": {
     "printWidth": 100
   },
-  "main": "minilight.js"
+  "main": "minilight.js",
+  "devDependencies": {
+    "esbuild": "^0.14.36"
+  }
 }
