@@ -13,10 +13,11 @@ const TokenTypes = {
   regex: 4, // regex
   stringDouble: 5, // string starting with "
   stringSingle: 6, // string starting with '
-  xmlComment: 7, // xml comment  <!-- -->
-  multiLineComment: 8, // multiline comment /* */
-  singleLineCommentSlash: 9, // single-line comment starting with two slashes //
-  singleLineCommentHash: 10, // single-line comment starting with hash #
+  stringTemplate: 7, // string starting with `
+  xmlComment: 8, // xml comment  <!-- -->
+  multiLineComment: 9, // multiline comment /* */
+  singleLineCommentSlash: 10, // single-line comment starting with two slashes //
+  singleLineCommentHash: 11, // single-line comment starting with hash #
 };
 
 const CommentTokenTypes = [
@@ -96,6 +97,8 @@ export const minilight = (el, config = {}) => {
         return prev1 === '"' && multichar;
       case TokenTypes.stringSingle:
         return prev1 === "'" && multichar;
+      case TokenTypes.stringTemplate:
+        return prev1 === "`" && multichar;
       case TokenTypes.xmlComment:
         return text[pos - 4] + prev2 + prev1 === "-->";
       case TokenTypes.multiLineComment:
@@ -121,6 +124,7 @@ export const minilight = (el, config = {}) => {
       case TokenTypes.regex:
       case TokenTypes.stringDouble:
       case TokenTypes.stringSingle:
+      case TokenTypes.stringTemplate:
         return styles.string;
 
       case TokenTypes.xmlComment:
@@ -140,6 +144,8 @@ export const minilight = (el, config = {}) => {
       return TokenTypes.multiLineComment;
     } else if (char + next1 + text[pos + 1] + text[pos + 2] == "<!--") {
       return TokenTypes.xmlComment;
+    } else if (char == "`") {
+      return TokenTypes.stringTemplate;
     } else if (char == "'") {
       return TokenTypes.stringSingle;
     } else if (char == '"') {
