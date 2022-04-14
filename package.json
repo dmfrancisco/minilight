@@ -1,8 +1,12 @@
 {
-  "author": "Dmitry Prokashev <heliosframework@gmail.com>",
-  "name": "microlight",
-  "description": "highlights code in any language",
-  "version": "0.0.7",
+  "name": "minilight",
+  "contributors": [
+    "Dmitry Prokashev <heliosframework@gmail.com>",
+    "Siddharth Singh <me@shantaram.xyz>",
+    "David Francisco <hello@dmfranc.com>"
+  ],
+  "description": "Minimal syntax highlighting library",
+  "version": "1.0.0",
   "keywords": [
     "syntax",
     "highlight",
@@ -15,13 +19,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/asvd/microlight.git"
+    "url": "git://github.com/dmfrancisco/minilight.git"
   },
-  "main": "microlight.js",
-  "dependencies": {},
-  "devDependencies": {},
-  "optionalDependencies": {},
+  "bugs": {
+    "url": "https://github.com/dmfrancisco/minilight/issues"
+  },
+  "license": "MIT",
   "engines": {
     "node": "*"
-  }
+  },
+  "prettier": {
+    "printWidth": 100
+  },
+  "main": "minilight.js"
 }
